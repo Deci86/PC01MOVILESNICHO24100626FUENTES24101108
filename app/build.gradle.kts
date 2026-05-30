@@ -1,6 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -33,6 +33,9 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.11"
+    }
 }
 
 dependencies {
@@ -48,6 +51,11 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.ui.text)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    
+    implementation(libs.androidx.compose.foundation)
+    
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
