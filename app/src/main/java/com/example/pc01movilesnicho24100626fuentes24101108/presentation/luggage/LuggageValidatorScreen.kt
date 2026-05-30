@@ -7,6 +7,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -23,8 +24,9 @@ enum class FlightType(val displayName: String, val maxWeight: Int) {
     INTERNATIONAL("Internacional", 32)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LuggageValidatorScreen() {
+fun LuggageValidatorScreen(onBackClick: () -> Unit) {
     var weightInput by remember { mutableStateOf("") }
     var selectedFlightType by remember { mutableStateOf(FlightType.DOMESTIC) }
     var weightError by remember { mutableStateOf("") }
@@ -33,24 +35,37 @@ fun LuggageValidatorScreen() {
     val weightValue = weightInput.toDoubleOrNull()
     val isValidWeight = weightValue != null && weightValue > 0
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState())
-            .padding(24.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Title
-        Text(
-            text = "Validador de Peso de Maleta",
-            style = MaterialTheme.typography.headlineMedium,
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("Validador de Peso de Maleta") },
+                navigationIcon = {
+                    IconButton(onClick = onBackClick) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Atrás",
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = MaterialTheme.colorScheme.onPrimary
+                )
+            )
+        }
+    ) { paddingValues ->
+        Column(
             modifier = Modifier
-                .padding(bottom = 32.dp, top = 22.dp)
-                .align(Alignment.CenterHorizontally)
-        )
+                .fillMaxSize()
+                .verticalScroll(rememberScrollState())
+                .padding(paddingValues)
+                .padding(24.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
 
-        // Weight Input
-        OutlinedTextField(
+            // Weight Input
+            OutlinedTextField(
             value = weightInput,
             onValueChange = { newValue: String ->
                 weightInput = newValue
@@ -154,12 +169,13 @@ fun LuggageValidatorScreen() {
         }
 
         // Result Display
-        if (showResult && isValidWeight) {
-            ResultCard(
-                weight = weightValue!!,
-                flightType = selectedFlightType,
-                modifier = Modifier.fillMaxWidth()
-            )
+            if (showResult && isValidWeight) {
+                ResultCard(
+                    weight = weightValue!!,
+                    flightType = selectedFlightType,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
         }
     }
 }
@@ -223,7 +239,7 @@ private fun ResultCard(
                 DetailRow("Límite permitido", "$maxWeight kg")
 
                 if (exceeds) {
-                    Divider(modifier = Modifier.padding(vertical = 12.dp))
+                    HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp))
                     DetailRow(
                         label = "Peso excedido",
                         value = "${"%.2f".format(excessWeight)} kg",
