@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.Button
@@ -81,21 +82,33 @@ fun budgetPlanner() {
         Spacer(modifier = Modifier.height(16.dp))
 
         // Dropdown para tipo de alojamiento
-        OutlinedTextField(
-            value = tipoAlojamiento,
-            onValueChange = { },
-            label = { Text("Tipo de alojamiento") },
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .clickable { expandedDropdown = true },
-            readOnly = true,
-            trailingIcon = {
-                Icon(
-                    imageVector = Icons.Filled.ArrowDropDown,
-                    contentDescription = "Desplegar opciones"
+                .clickable { expandedDropdown = true } // El Box ahora captura el clic correctamente
+        ) {
+            OutlinedTextField(
+                value = tipoAlojamiento,
+                onValueChange = { },
+                label = { Text("Tipo de alojamiento") },
+                modifier = Modifier.fillMaxWidth(),
+                readOnly = true,
+                enabled = false, // Deshabilitado para que no intente abrir el teclado ni bloquee el clic del Box
+                trailingIcon = {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowDropDown,
+                        contentDescription = "Desplegar opciones"
+                    )
+                },
+                //Mantiene los colores normales del texto aunque esté disabled
+                colors = androidx.compose.material3.OutlinedTextFieldDefaults.colors(
+                    disabledTextColor = MaterialTheme.colorScheme.onSurface,
+                    disabledBorderColor = MaterialTheme.colorScheme.outline,
+                    disabledLabelColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                    disabledTrailingIconColor = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-            }
-        )
+            )
+        }
 
         DropdownMenu(
             expanded = expandedDropdown,
