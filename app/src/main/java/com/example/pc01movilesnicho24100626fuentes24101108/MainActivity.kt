@@ -9,6 +9,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import com.example.pc01movilesnicho24100626fuentes24101108.presentation.destinations.DestinationsScreen
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas.budgetPlanner
 import com.example.pc01movilesnicho24100626fuentes24101108.presentation.luggage.LuggageValidatorScreen
 import com.example.pc01movilesnicho24100626fuentes24101108.presentation.menu.MenuNavigationScreen
 import com.example.pc01movilesnicho24100626fuentes24101108.presentation.navigation.NavScreen
