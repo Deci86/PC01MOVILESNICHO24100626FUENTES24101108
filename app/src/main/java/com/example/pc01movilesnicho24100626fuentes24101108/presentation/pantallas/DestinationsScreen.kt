@@ -1,4 +1,4 @@
-package com.example.pc01movilesnicho24100626fuentes24101108.presentation.destinations
+package com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -16,6 +16,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.destinations.Destination
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.destinations.DestinationRepository
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
