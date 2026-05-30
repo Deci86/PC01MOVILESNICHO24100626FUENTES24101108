@@ -1,4 +1,4 @@
-package com.example.pc01movilesnicho24100626fuentes24101108.presentation.luggage
+package com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -272,7 +272,7 @@ private fun DetailRow(
             text = value,
             style = MaterialTheme.typography.bodyMedium,
             color = if (isError) MaterialTheme.colorScheme.error else Color.Black,
-            fontWeight = if (isError) androidx.compose.ui.text.font.FontWeight.Bold else androidx.compose.ui.text.font.FontWeight.Normal
+            fontWeight = if (isError) FontWeight.Bold else FontWeight.Normal
         )
     }
 }

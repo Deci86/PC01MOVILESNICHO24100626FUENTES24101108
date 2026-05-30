@@ -8,10 +8,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import com.example.pc01movilesnicho24100626fuentes24101108.presentation.destinations.DestinationsScreen
 import com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas.budgetPlanner
-import com.example.pc01movilesnicho24100626fuentes24101108.presentation.luggage.LuggageValidatorScreen
-import com.example.pc01movilesnicho24100626fuentes24101108.presentation.menu.MenuNavigationScreen
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas.DestinationsScreen
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas.LuggageValidatorScreen
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas.MenuNavigationScreen
+import com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas.permisoUbicacionScreen
 import com.example.pc01movilesnicho24100626fuentes24101108.presentation.navigation.NavScreen
 import com.example.pc01movilesnicho24100626fuentes24101108.ui.theme.PC01MOVILESNICHOTheme
 
@@ -56,6 +57,12 @@ fun AppNavigation() {
                     currentScreen = NavScreen.MENU
                 }
             )
+        }
+        NavScreen.BUDGET_PLANNER -> {
+            budgetPlanner()
+        }
+        NavScreen.PERMISO_UBICACION -> {
+            permisoUbicacionScreen()
         }
     }
 }

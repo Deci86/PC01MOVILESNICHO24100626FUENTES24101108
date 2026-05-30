@@ -3,5 +3,7 @@ package com.example.pc01movilesnicho24100626fuentes24101108.presentation.navigat
 enum class NavScreen {
     MENU,
     LUGGAGE,
-    DESTINATIONS
+    DESTINATIONS,
+    BUDGET_PLANNER,
+    PERMISO_UBICACION
 }

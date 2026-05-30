@@ -1,4 +1,4 @@
-package com.example.pc01movilesnicho24100626fuentes24101108.presentation.menu
+package com.example.pc01movilesnicho24100626fuentes24101108.presentation.pantallas
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -21,15 +21,6 @@ fun MenuNavigationScreen(onNavigate: (NavScreen) -> Unit) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Title
-        Text(
-            text = "Mi Aplicación",
-            style = MaterialTheme.typography.headlineLarge,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 48.dp),
-            color = MaterialTheme.colorScheme.primary
-        )
-
         // Destinations Button
         Button(
             onClick = { onNavigate(NavScreen.DESTINATIONS) },
@@ -63,6 +54,43 @@ fun MenuNavigationScreen(onNavigate: (NavScreen) -> Unit) {
                 text = "✈️ Validador de Maleta",
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Bold
+            )
+        }
+
+        // Budget Planner Button
+        Button(
+            onClick = { onNavigate(NavScreen.BUDGET_PLANNER) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp)
+                .padding(bottom = 16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.tertiary
+            )
+        ) {
+            Text(
+                text = "💰 Planificador de Presupuesto",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        // Permiso Ubicación Button
+        Button(
+            onClick = { onNavigate(NavScreen.PERMISO_UBICACION) },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(60.dp)
+                .padding(bottom = 16.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.errorContainer
+            )
+        ) {
+            Text(
+                text = "📍 Permisos de Ubicación",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onErrorContainer
             )
         }
     }
